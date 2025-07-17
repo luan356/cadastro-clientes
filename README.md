@@ -2,101 +2,41 @@
 
 Este projeto é uma API REST para cadastro, atualização, listagem e exclusão de clientes, com validação automática de endereço via CEP usando a BrasilAPI. Foi construído com Laravel 10, PHP 8 e utiliza padrões modernos como Repository Pattern e testes automatizados.
 
----
-
-## Tecnologias Utilizadas
+### Pré-requisitos
 
 - PHP 8.x
-- Laravel 10.x
-- MySQL ou PostgreSQL
 - Composer
-- PHPUnit (testes automatizados)
+- MySQL ou PostgreSQL
+- Laravel CLI (opcional)
 
-
-
----
-
-## Funcionalidades
-
-- Cadastro de clientes com:
-  - Nome completo
-  - CPF (validado e único)
-  - Email (validado e único)
-  - Telefone
-  - CEP
-  - Endereço automático via BrasilAPI (logradouro, bairro, cidade, estado)
-- Edição, exclusão e listagem de clientes com filtros e paginação.
-- Repository Pattern para organização do código.
-- Testes automatizados para garantir qualidade.
-- Seeders para popular a base com dados iniciais.
-
----
-
-## Como rodar o projeto
-
-### 1. Clonar o repositório
+### Passos
 
 ```bash
-git clone <URL_DO_REPOSITORIO>
+git clone https://github.com/luan356/cadastro-clientes.git
 cd cadastro-clientes
-
 
 composer install
 
 cp .env.example .env
-
-
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=seu_banco
-DB_USERNAME=seu_usuario
-DB_PASSWORD=sua_senha
-
+# Configure o .env com os dados do seu banco de dados
 
 php artisan migrate --seed
-
-
 php artisan serve
+- Cadastro de clientes com:
+  - Nome completo
+  - CPF (único e validado)
+  - Email (único e validado)
+  - Telefone
+  - CEP (validação via BrasilAPI)
+- Autopreenchimento de endereço
+- Listagem com filtros e paginação
+- Edição e exclusão de clientes
+- Testes automatizados
+- Seeders para dados iniciais
 
+***************************************************************
 
-
-Rotas Principais
-Método	Rota	Descrição
-GET	/api/clientes	Listar clientes (com filtros e paginação)
-POST	/api/clientes	Criar um cliente
-GET	/api/clientes/{id}	Buscar cliente por ID
-PUT	/api/clientes/{id}	Atualizar cliente
-DELETE	/api/clientes/{id}	Deletar cliente
-
-
-O projeto inclui testes para as principais funcionalidades da API, como criação, atualização, listagem e exclusão de clientes.
-
-### Rodar os testes
-
-```bash
-php artisan test
-
-
-Seeders
-
-Seeders populam a base de dados com dados iniciais para testes e desenvolvimento.
-
-    EnderecoSeeder: cria múltiplos endereços para teste.
-
-    ClienteSeeder: cria clientes vinculados a endereços existentes.
-
-Para rodar manualmente os seeders:
-
-
-php artisan db:seed --class=ClienteSeeder
-
-
-
-## Como usar a API
-
-### Criar cliente (exemplo payload)
-
+### Criar cliente
 ```json
 {
     "nome_completo": "Luan Silva",
@@ -107,21 +47,37 @@ php artisan db:seed --class=ClienteSeeder
 }
 
 
-Atualizar cliente (exemplo payload)
-
+### Atualizar cliente
 {
-    "nome_completo": "Luan Silva Atualizado",
-    "email": "luan_atualizado@email.com",
+    "nome_completo": "Luan Atualizado",
+    "email": "novo@email.com",
     "telefone": "85998887777",
     "cep": "60353190"
 }
 
+## Variáveis de Ambiente
+
+Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=cadastro_clientes
+DB_USERNAME=root
+DB_PASSWORD=senha
 
 
-Observações
+## Licença
 
-    A validação de CPF é feita para garantir formato correto e unicidade.
+Este projeto está sob a licença MIT.
 
-    A validação do CEP consulta a BrasilAPI para garantir endereço real.
+## Aprendizados
 
-    Caso a BrasilAPI esteja indisponível, operações podem falhar (exemplo: testes com mocks são recom
+Este projeto demonstrou na prática:
+
+- Como utilizar o padrão Repository no Laravel
+- Como integrar APIs externas (BrasilAPI)
+- Como escrever testes automatizados com PHPUnit
+- Como criar seeders personalizados
+
+
