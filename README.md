@@ -55,8 +55,7 @@ php artisan migrate
 php artisan db:seed
 
 ## execute as seus testes
-php artisan test
-
+php artisan test --env=testing
 ## execute o servidor
 php artisan serve
 
