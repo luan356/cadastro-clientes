@@ -4,10 +4,11 @@ Este projeto é uma API REST para cadastro, atualização, listagem e exclusão 
 
 ### Pré-requisitos
 
-- PHP 8.x
-- Composer
-- MySQL ou PostgreSQL
-- Laravel 
+- PHP `^8.4`  
+- Composer `^2.8`  
+- Laravel Framework `^12.0` 
+- MySQL `^8.0`  
+
 
 ### funcionalidades 
 - Cadastro de clientes com:
