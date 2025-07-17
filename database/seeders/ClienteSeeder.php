@@ -20,7 +20,7 @@ class ClienteSeeder extends Seeder
 
         Cliente::create([
             'nome_completo' => 'Cliente Exemplo',
-            'cpf' => '06630436385',
+            'cpf' => '81444833081',
             'email' => 'cliente@example.com',
             'telefone' => '85999999999',
             'endereco_id' => $endereco->id,
