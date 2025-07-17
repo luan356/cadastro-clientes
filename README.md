@@ -34,6 +34,12 @@ git clone https://github.com/luan356/cadastro-clientes.git
 cd cadastro-clientes
 
 composer install
+## criar banco de dados :
+
+CREATE DATABASE cadastro_clientes;
+CREATE USER user_laravel WITH PASSWORD '123456';
+GRANT ALL PRIVILEGES ON DATABASE cadastro_clientes TO user_laravel;
+
 
 cp .env.example .env
 # Configure o .env com os dados do seu banco de dados
