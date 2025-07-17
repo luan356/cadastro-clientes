@@ -7,7 +7,7 @@ Este projeto é uma API REST para cadastro, atualização, listagem e exclusão 
 - PHP 8.x
 - Composer
 - MySQL ou PostgreSQL
-- Laravel CLI (opcional)
+- Laravel 
 
 ### Passos
 
@@ -20,8 +20,10 @@ composer install
 cp .env.example .env
 # Configure o .env com os dados do seu banco de dados
 
-php artisan migrate --seed
+php artisan migrdate --seed
 php artisan serve
+
+
 - Cadastro de clientes com:
   - Nome completo
   - CPF (único e validado)
@@ -35,6 +37,12 @@ php artisan serve
 - Seeders para dados iniciais
 
 ***************************************************************
+
+### Se for usar Docker com Laravel Sail:
+
+./vendor/bin/sail up -d
+./vendor/bin/sail artisan migrate --seed
+./vendor/bin/sail artisan serve
 
 ### Criar cliente
 ```json
