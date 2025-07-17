@@ -35,8 +35,23 @@ git clone https://github.com/luan356/cadastro-clientes.git
 cd cadastro-clientes
 
 composer install
-## criar banco de dados :
 
+### Se for usar Docker com Laravel Sail:
+
+./vendor/bin/sail up -d
+./vendor/bin/sail artisan migrate --seed
+./vendor/bin/sail artisan serve
+
+##docker compose
+  docker compose up --build 
+  docker compose restart 
+  
+
+
+
+
+
+## criar banco de dados :
 CREATE DATABASE cadastro_clientes;
 CREATE USER user_laravel WITH PASSWORD '123456';
 GRANT ALL PRIVILEGES ON DATABASE cadastro_clientes TO user_laravel;
@@ -48,12 +63,27 @@ cp .env.example .env
 
 Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
 
+## env para usar com docker 
+
+
+DB_CONNECTION=db
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=cadastro_clientes
+DB_USERNAME=user_laravel
+DB_PASSWORD=123456
+
+
+## env para usar sem docker 
+
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=cadastro_clientes
 DB_USERNAME=user_laravel
 DB_PASSWORD=123456
+
+## entre no container e execute os comandos abaixo :::
 
 ## execute as migrations
 php artisan migrate

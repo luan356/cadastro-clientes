@@ -21,7 +21,6 @@ class ClienteRepository implements ClienteRepositoryInterface
 
     public function findById(int $id)
     {
-        // Use find para não lançar exceção, mas retornar null se não achar
         return Cliente::with('endereco')->find($id);
     }
 
