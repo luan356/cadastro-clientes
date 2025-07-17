@@ -66,4 +66,10 @@ public function listar(array $filtros = [])
 {
     return $this->clienteRepository->listar($filtros);}
 
+
+    public function deletar(int $id)
+{
+    return $this->clienteRepository->delete($id);
+}
+
 }

@@ -48,4 +48,15 @@ public function index(Request $request): JsonResponse
     $clientes = $this->clienteService->listar($request->all());
     return response()->json($clientes);
 }
+
+public function destroy(int $id): JsonResponse
+{
+    $deletado = $this->clienteService->deletar($id);
+
+    if ($deletado) {
+        return response()->json(['mensagem' => 'Cliente deletado com sucesso.'], 200);
+    }
+
+    return response()->json(['mensagem' => 'Não foi possível deletar o cliente.'], 400);
+}
 }
